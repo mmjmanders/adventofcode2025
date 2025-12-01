@@ -5,6 +5,7 @@
   "scripts": {
     "test": "vitest",
     "day1": "tsx day1",
+    "day2": "tsx day2",
     "prepare": "is-ci || husky"
   },
   "type": "module",
