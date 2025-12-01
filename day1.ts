@@ -1,16 +1,17 @@
 import * as fs from "node:fs/promises";
 import isCI from "is-ci";
+import { Puzzle } from "./types.ts";
 
-export class Day1 {
+export class Day1 extends Puzzle {
   private mod(num: number, modulus: number) {
     return ((num % modulus) + modulus) % modulus;
   }
 
-  async part1(input: string): Promise<number> {
+  async part1(): Promise<string | number> {
     let solution = 0,
       pos = 50;
 
-    const parsedInput = input
+    const parsedInput = this.input
       .split(/\r?\n/)
       .map((x: string) =>
         x[0] === "L" ? -Number(x.slice(1)) : Number(x.slice(1)),
@@ -27,11 +28,11 @@ export class Day1 {
     return solution;
   }
 
-  async part2(input: string): Promise<number> {
+  async part2(): Promise<string | number> {
     let solution = 0,
       pos = 50;
 
-    const parsedInput = input
+    const parsedInput = this.input
       .split(/\r?\n/)
       .map((x: string) =>
         x[0] === "L" ? -Number(x.slice(1)) : Number(x.slice(1)),
@@ -56,9 +57,9 @@ export class Day1 {
 }
 
 const solve = async (input: string) => {
-  const puzzle = new Day1();
-  console.log("Part 1: ", await puzzle.part1(input));
-  console.log("Part 2: ", await puzzle.part2(input));
+  const puzzle = new Day1(input);
+  console.log("Part 1: ", await puzzle.part1());
+  console.log("Part 2: ", await puzzle.part2());
 };
 
 if (!isCI) {
