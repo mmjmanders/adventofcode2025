@@ -4,11 +4,30 @@ import { Puzzle } from "./types.ts";
 
 export class Day2 extends Puzzle {
   async part1(): Promise<string | number> {
-    return 0;
+    return this.input.split(/,/).reduce((prev, curr) => {
+      const [low, high] = curr.split(/-/);
+      const numDigits = Math.floor(Math.max(low!.length, high!.length) / 2);
+      const range = Array(Number(high) - Number(low) + 1)
+        .fill(0)
+        .map((_, i) => i + Number(low));
+      const hasDouble = new RegExp(`(\\d{${numDigits}})\\1`);
+      const doubles = range.filter(
+        (n) =>
+          hasDouble.test(n.toString()) && n.toString().length === numDigits * 2,
+      );
+      return prev + doubles.reduce((sum, num) => sum + num, 0);
+    }, 0);
   }
 
   async part2(): Promise<string | number> {
-    return 0;
+    return this.input.split(/,/).reduce((prev, curr) => {
+      const [low, high] = curr.split(/-/);
+      const range = Array(Number(high) - Number(low) + 1)
+        .fill(0)
+        .map((_, i) => i + Number(low));
+      const doubles = range.filter((n) => /^(\d+)\1+$/.test(n.toString()));
+      return prev + doubles.reduce((sum, num) => sum + num, 0);
+    }, 0);
   }
 }
 
@@ -19,6 +38,6 @@ const solve = async (input: string) => {
 };
 
 if (!isCI) {
-  const input = await fs.readFile("input/day1.txt", { encoding: "utf8" });
+  const input = await fs.readFile("input/day2.txt", { encoding: "utf8" });
   await solve(input);
 }
