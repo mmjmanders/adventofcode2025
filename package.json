@@ -6,6 +6,7 @@
     "test": "vitest",
     "day1": "tsx day1",
     "day2": "tsx day2",
+    "day3": "tsx day3",
     "prepare": "is-ci || husky"
   },
   "type": "module",
