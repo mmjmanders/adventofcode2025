@@ -51,13 +51,9 @@ export class Day3 extends Puzzle {
   }
 }
 
-const solve = async (input: string) => {
+if (!isCI) {
+  const input = await fs.readFile("input/day3.txt", { encoding: "utf8" });
   const puzzle = new Day3(input);
   console.log("Part 1: ", await puzzle.part1());
   console.log("Part 2: ", await puzzle.part2());
-};
-
-if (!isCI) {
-  const input = await fs.readFile("input/day3.txt", { encoding: "utf8" });
-  await solve(input);
 }
