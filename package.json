@@ -8,6 +8,7 @@
     "day2": "tsx day2",
     "day3": "tsx day3",
     "day4": "tsx day4",
+    "day5": "tsx day5",
     "prepare": "is-ci || husky"
   },
   "type": "module",
