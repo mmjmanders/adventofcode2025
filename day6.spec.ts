@@ -1,7 +1,7 @@
 import { Day6 } from "./day6.ts";
 import type { Puzzle } from "./types.ts";
 
-describe("day5", () => {
+describe("day6", () => {
   let puzzle: Puzzle;
 
   beforeEach(() => {
